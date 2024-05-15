@@ -7,7 +7,7 @@ GPIO.setmode(GPIO.BCM)
 
 PWM_RIGHT = 4
 PWM_LEFT = 14
-IN1 = 6
+IN1 = 10
 IN2 = 8
 IN3 = 11
 IN4 = 25
@@ -32,9 +32,9 @@ def serve_page():
 @app.route("/Forward")
 def api_forward():
     #Code that make the rover go Forward
-    GPIO.output(IN1,GPIO.LOW) 
+    GPIO.output(IN1,GPIO.HIGH)
     GPIO.output(IN2,GPIO.LOW)
-    GPIO.output(IN3,GPIO.HIGH)
+    GPIO.output(IN3,GPIO.LOW)
     GPIO.output(IN4,GPIO.HIGH)
     GPIO.output(PWM_RIGHT,GPIO.HIGH)
     GPIO.output(PWM_LEFT,GPIO.HIGH)
@@ -69,8 +69,8 @@ def api_turnRight():
     #Code that make the rover turn right
     GPIO.output(IN1,GPIO.LOW)
     GPIO.output(IN2,GPIO.HIGH)
-    GPIO.output(IN3,GPIO.HIGH)
-    GPIO.output(IN4,GPIO.LOW)
+    GPIO.output(IN3,GPIO.LOW)
+    GPIO.output(IN4,GPIO.HIGH)
     GPIO.output(PWM_RIGHT,GPIO.HIGH)
     GPIO.output(PWM_LEFT,GPIO.HIGH)
     return Response("OK", mimetype="text/plain; charset=utf-8", headers={"Cache-Control":"no-cache"})
@@ -80,8 +80,8 @@ def api_turnLeft():
     #Code that make the rover turn left
     GPIO.output(IN1,GPIO.HIGH)
     GPIO.output(IN2,GPIO.LOW)
-    GPIO.output(IN3,GPIO.LOW)
-    GPIO.output(IN4,GPIO.HIGH)
+    GPIO.output(IN3,GPIO.HIGH)
+    GPIO.output(IN4,GPIO.LOW)
     GPIO.output(PWM_RIGHT,GPIO.HIGH)
     GPIO.output(PWM_LEFT,GPIO.HIGH)
     return Response("OK", mimetype="text/plain; charset=utf-8", headers={"Cache-Control":"no-cache"})
