@@ -44,9 +44,9 @@ def api_forward():
 @app.route("/Back")
 def api_back():
     #Code that make the rover go back
-    GPIO.output(IN1,GPIO.HIGH)
+    GPIO.output(IN1,GPIO.LOW)
     GPIO.output(IN2,GPIO.HIGH)
-    GPIO.output(IN3,GPIO.LOW)
+    GPIO.output(IN3,GPIO.HIGH)
     GPIO.output(IN4,GPIO.LOW)
     GPIO.output(PWM_RIGHT,GPIO.HIGH)
     GPIO.output(PWM_LEFT,GPIO.HIGH)
