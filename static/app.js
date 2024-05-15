@@ -28,7 +28,6 @@ function onTurnLeft(){
     x.send()
 }
 
-
 window.addEventListener('keydown', (e) =>{
     switch(e.key){
             case 'a':
@@ -44,4 +43,10 @@ window.addEventListener('keydown', (e) =>{
                 onBack();
                 break;
         }
-    });
+});
+
+window.addEventListener('keyup', (e) =>{
+    if(e.key === 'w' || e.key === 'a' || e.key === 's' || e.key === 'd'){
+        onStop();
+    }
+});

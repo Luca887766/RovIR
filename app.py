@@ -5,8 +5,17 @@ app = Flask("RovIR WEB")
 
 GPIO.setmode(GPIO.BCM)
 
-#remove
-GPIO.setup(7,GPIO.OUT)
+PWM_RIGHT = 4
+PWM_LEFT = 14
+IN1 = 6
+IN2 = 8
+IN3 = 11
+IN4 = 25
+
+GPIO.setup(IN1,GPIO.OUT)
+GPIO.setup(IN2,GPIO.OUT)
+GPIO.setup(IN3,GPIO.OUT)
+GPIO.setup(IN4,GPIO.OUT)
 
 @app.route("/<path:p>")
 def serve_static(p):
@@ -16,35 +25,50 @@ def serve_static(p):
 def serve_page():
     return serve_static("index.html")
 
+
 @app.route("/Forward")
 def api_forward():
     #Code that make the rover go Forward
-    GPIO.output(7,GPIO.HIGH)
-    return Response("OK", 
-                    mimetype="text/plain; charset=utf-8", 
-                    headers={"Cache-Control":"no-cache"})
+    GPIO.output(IN1,GPIO.LOW)
+    GPIO.output(IN2,GPIO.LOW)
+    GPIO.output(IN3,GPIO.HIGH)
+    GPIO.output(IN4,GPIO.HIGH)
+    return Response("OK", mimetype="text/plain; charset=utf-8", headers={"Cache-Control":"no-cache"})
 
 
 @app.route("/Back")
 def api_back():
-    #doce that make the rover go back
-    GPIO.output(7,GPIO.LOW)
-    return Response("OK", 
-                    mimetype="text/plain; charset=utf-8", 
-                    headers={"Cache-Control":"no-cache"})
+    #Code that make the rover go back
+    GPIO.output(IN1,GPIO.HIGH)
+    GPIO.output(IN2,GPIO.HIGH)
+    GPIO.output(IN3,GPIO.LOW)
+    GPIO.output(IN4,GPIO.LOW)
+    return Response("OK", mimetype="text/plain; charset=utf-8", headers={"Cache-Control":"no-cache"})
 
 
 @app.route("/Stop")
 def api_stop():
     #Code that make the rover stop
-    pass
+    GPIO.output(IN1,GPIO.LOW)
+    GPIO.output(IN2,GPIO.LOW)
+    GPIO.output(IN3,GPIO.LOW)
+    GPIO.output(IN4,GPIO.LOW)
+    return Response("OK", mimetype="text/plain; charset=utf-8", headers={"Cache-Control":"no-cache"})
 
 @app.route("/TurnRight")
 def api_turnRight():
-    #doce that make the rover turn right
-    pass
+    #Code that make the rover turn right
+    GPIO.output(IN1,GPIO.LOW)
+    GPIO.output(IN2,GPIO.HIGH)
+    GPIO.output(IN3,GPIO.HIGH)
+    GPIO.output(IN4,GPIO.LOW)
+    return Response("OK", mimetype="text/plain; charset=utf-8", headers={"Cache-Control":"no-cache"})
 
 @app.route("/TurnLeft")
 def api_turnLeft():
     #Code that make the rover turn left
-    pass
+    GPIO.output(IN1,GPIO.HIGH)
+    GPIO.output(IN2,GPIO.LOW)
+    GPIO.output(IN3,GPIO.LOW)
+    GPIO.output(IN4,GPIO.HIGH)
+    return Response("OK", mimetype="text/plain; charset=utf-8", headers={"Cache-Control":"no-cache"})
