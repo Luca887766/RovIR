@@ -78,7 +78,7 @@ window.addEventListener('keydown', (e) =>{
                 onBack();
                 break;
             default:
-                stop();
+                onStop();
                 break;
         }
 });
