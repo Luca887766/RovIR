@@ -1,0 +1,1 @@
+//Code that contains all the functions that are used to comunicate with the app.py code
