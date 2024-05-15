@@ -17,6 +17,9 @@ GPIO.setup(IN2,GPIO.OUT)
 GPIO.setup(IN3,GPIO.OUT)
 GPIO.setup(IN4,GPIO.OUT)
 
+GPIO.setup(PWM_RIGHT,GPIO.OUT)
+GPIO.setup(PWM_LEFT,GPIO.OUT)
+
 @app.route("/<path:p>")
 def serve_static(p):
     return app.send_static_file(p)
@@ -29,10 +32,12 @@ def serve_page():
 @app.route("/Forward")
 def api_forward():
     #Code that make the rover go Forward
-    GPIO.output(IN1,GPIO.LOW)
+    GPIO.output(IN1,GPIO.LOW) 
     GPIO.output(IN2,GPIO.LOW)
     GPIO.output(IN3,GPIO.HIGH)
     GPIO.output(IN4,GPIO.HIGH)
+    GPIO.output(PWM_RIGHT,GPIO.HIGH)
+    GPIO.output(PWM_LEFT,GPIO.HIGH)
     return Response("OK", mimetype="text/plain; charset=utf-8", headers={"Cache-Control":"no-cache"})
 
 
@@ -43,6 +48,8 @@ def api_back():
     GPIO.output(IN2,GPIO.HIGH)
     GPIO.output(IN3,GPIO.LOW)
     GPIO.output(IN4,GPIO.LOW)
+    GPIO.output(PWM_RIGHT,GPIO.HIGH)
+    GPIO.output(PWM_LEFT,GPIO.HIGH)
     return Response("OK", mimetype="text/plain; charset=utf-8", headers={"Cache-Control":"no-cache"})
 
 
@@ -53,6 +60,8 @@ def api_stop():
     GPIO.output(IN2,GPIO.LOW)
     GPIO.output(IN3,GPIO.LOW)
     GPIO.output(IN4,GPIO.LOW)
+    GPIO.output(PWM_RIGHT,GPIO.HIGH)
+    GPIO.output(PWM_LEFT,GPIO.HIGH)
     return Response("OK", mimetype="text/plain; charset=utf-8", headers={"Cache-Control":"no-cache"})
 
 @app.route("/TurnRight")
@@ -62,6 +71,8 @@ def api_turnRight():
     GPIO.output(IN2,GPIO.HIGH)
     GPIO.output(IN3,GPIO.HIGH)
     GPIO.output(IN4,GPIO.LOW)
+    GPIO.output(PWM_RIGHT,GPIO.HIGH)
+    GPIO.output(PWM_LEFT,GPIO.HIGH)
     return Response("OK", mimetype="text/plain; charset=utf-8", headers={"Cache-Control":"no-cache"})
 
 @app.route("/TurnLeft")
@@ -71,4 +82,6 @@ def api_turnLeft():
     GPIO.output(IN2,GPIO.LOW)
     GPIO.output(IN3,GPIO.LOW)
     GPIO.output(IN4,GPIO.HIGH)
+    GPIO.output(PWM_RIGHT,GPIO.HIGH)
+    GPIO.output(PWM_LEFT,GPIO.HIGH)
     return Response("OK", mimetype="text/plain; charset=utf-8", headers={"Cache-Control":"no-cache"})
