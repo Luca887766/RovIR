@@ -1,1 +1,28 @@
-//Code that contains all the functions that are used to comunicate with the app.py code
+function onAccendi(){
+    let x = new XMLHttpRequest()
+    x.open("GET","/accendi")
+    x.send()
+}
+
+function onSpegni(){
+    let x = new XMLHttpRequest()
+    x.open("GET","/accendi")
+    x.send()
+}
+
+window.addEventListener('keydown', (e) =>{
+    switch(e.key){
+            case 'a':
+                onAccendi();
+                break;
+            case 'd':
+                onAccendi();
+                break;
+            case 'w':
+                onAccendi();
+                break;
+            case 's':
+                onSpegni();
+                break;
+        }
+    });
