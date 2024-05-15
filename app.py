@@ -74,7 +74,7 @@ def api_turnRight():
     GPIO.output(PWM_RIGHT,GPIO.HIGH)
     GPIO.output(PWM_LEFT,GPIO.HIGH)
     return Response("OK", mimetype="text/plain; charset=utf-8", headers={"Cache-Control":"no-cache"})
-d
+
 @app.route("/TurnLeft")
 def api_turnLeft():
     #Code that make the rover turn left
