@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('sfondo.jpeg');
+    background-image: url('img/sfondo.jpeg');
     background-size: 58%;
     background-position: right;
     background-repeat: no-repeat;
@@ -16,6 +16,24 @@
     position: fixed;
     bottom: 20%;
     left: 9%;
+    padding: 20px 50px;
+    font-size: large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-width: medium;
+    border-color: white;
+    border-style: solid;
+    border-radius: 0;
+    background-color: black;
+    color: white;
+    transition: 0.5s;
+}
+
+#startButton:hover{
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background-color: white;
+    color: black;
+    opacity: 1;
 }
 
 div.slide.visible{
