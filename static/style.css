@@ -16,22 +16,22 @@
     position: fixed;
     bottom: 20%;
     left: 9%;
-    padding: 20px 50px;
+    padding: 15px 40px;
     font-size: large;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-width: medium;
-    border-color: white;
+    border-color: green;
     border-style: solid;
     border-radius: 0;
     background-color: black;
-    color: white;
+    color: green;
     transition: 0.5s;
 }
 
 #startButton:hover{
     border-top-left-radius: 50px;
     border-bottom-right-radius: 50px;
-    background-color: white;
+    background-color: green;
     color: black;
     opacity: 1;
 }
@@ -46,3 +46,16 @@ div.slide.hidden{
     z-index: 0;
 }
 
+.titleText{
+    position: fixed;
+    top: 12%;
+    left: 6%;
+    color: green; 
+    font-family: "Monserrat";
+    font-size: 6vw;
+}
+
+@font-face {
+    font-family: "Monserrat";
+    src: url("font/Montserrat-VariableFont_wght.ttf");
+}
