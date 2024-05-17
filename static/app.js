@@ -7,9 +7,14 @@ let w = false;
 let a = false;
 let s = false;
 let d = false;
+let eneabled = false;
+
+function enableAll(){
+    eneabled = true;
+}
 
 function onForward() {
-    if (forward === false) {
+    if (forward === false && eneabled) {
         let x = new XMLHttpRequest()
         x.open("GET", "/Forward")
         x.send()
@@ -21,7 +26,7 @@ function onForward() {
 }
 
 function onBack() {
-    if (back === false) {
+    if (back === false && eneabled) {
         let x = new XMLHttpRequest()
         x.open("GET", "/Back")
         x.send()
@@ -55,7 +60,7 @@ function onStop() {
 }
 
 function onTurn(c) {
-    if (c === 'R') {
+    if (c === 'R' && eneabled) {
         if (turnRight === false) {
             let x = new XMLHttpRequest()
             x.open("GET", "/TurnRight")
@@ -65,7 +70,7 @@ function onTurn(c) {
             turnLeft = false
             turnRight = true
         }
-    } else if (c === 'L') {
+    } else if (c === 'L' && eneabled) {
         if (turnLeft === false) {
             let x = new XMLHttpRequest()
             x.open("GET", "/TurnLeft")
