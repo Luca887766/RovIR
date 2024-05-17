@@ -18,7 +18,7 @@
     left: 9%;
     padding: 15px 40px;
     font-size: large;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Monserrat";
     border-width: medium;
     border-color: green;
     border-style: solid;
@@ -43,7 +43,7 @@ div.slide.visible{
 
 div.slide.hidden{
     opacity: 0;
-    z-index: 0;
+    z-index: -100;
 }
 
 .titleText{
@@ -58,4 +58,52 @@ div.slide.hidden{
 @font-face {
     font-family: "Monserrat";
     src: url("font/Montserrat-VariableFont_wght.ttf");
+}
+
+#forwardButton{
+    position: fixed;
+    left: 100px;
+    bottom: 150px;
+}
+
+#backButton{
+    position: fixed;
+    left: 100px;
+    bottom: 50px;
+}
+
+#leftButton{
+    position: fixed;
+    left: 50px;
+    bottom: 100px;
+}
+
+#rightButton{
+    position: fixed;
+    left: 150px;
+    bottom: 100px;
+}
+
+.buttonComands{
+    color: green; 
+    font-family: "Monserrat";
+    height: 50px;
+    width: 50px;
+    border-width: medium;
+    border-color: green;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+.buttonComands:active{
+    color: black; 
+    font-family: "Monserrat";
+    height: 50px;
+    width: 50px;
+    border-width: medium;
+    border-color: green;
+    border-style: solid;
+    border-radius: 10px;
+    background-color: green;
 }
