@@ -10,10 +10,10 @@
     <body>
         <div class="slide" id="startPage">
             <p class="titleText">RovIR WEB</p>
-            <button id="startButton" onclick="toSlide('liveRovir')">START</button>
+            <button id="startButton" onclick="toSlide('liveRovir');enambleAll()">START</button>
         </div>
         <div class="slide" id="liveRovir">
-            <button class="buttonComands" id="forwardButton" onclick="onForward()" >W</button>
+            <button class="buttonComands" id="forwardButton" onclick="onForward()"  >W</button>
             <button class="buttonComands" id="leftButton" onclick="onTurn('L')">A</button>
             <button class="buttonComands" id="backButton" onclick="onBack()">S</button>
             <button class="buttonComands" id="rightButton" onclick="onTurn('R')">D</button>
