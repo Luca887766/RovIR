@@ -3,14 +3,16 @@ let back = false;
 let stop = false;
 let turnLeft = false;
 let turnRight = false;
-let stopCount = 0;
+let w = false;
+let a = false;
+let s = false;
+let d = false;
 
 function onForward() {
     if (forward === false) {
         let x = new XMLHttpRequest()
         x.open("GET", "/Forward")
         x.send()
-        stopCount += 1;
         forward = true
         back = false
         turnLeft = false
@@ -23,7 +25,6 @@ function onBack() {
         let x = new XMLHttpRequest()
         x.open("GET", "/Back")
         x.send()
-        stopCount += 1;
         forward = false
         back = true
         turnLeft = false
@@ -32,7 +33,7 @@ function onBack() {
 }
 
 function onStop() {
-    if (stopCount <= 0) {
+    if (w === false && a === false && s === false && d === false) {
         let x = new XMLHttpRequest()
         x.open("GET", "/Stop")
         x.send()
@@ -40,6 +41,16 @@ function onStop() {
         back = false
         turnLeft = false
         turnRight = false
+    } else {
+        if (w === true) {
+            onForward()
+        } if (a === true) {
+            onTurn('L')
+        } if (s === true) {
+            onBack()
+        } if (d === true) {
+            onTurn('R')
+        }
     }
 }
 
@@ -49,7 +60,6 @@ function onTurn(c) {
             let x = new XMLHttpRequest()
             x.open("GET", "/TurnRight")
             x.send()
-            stopCount += 1;
             forward = false
             back = false
             turnLeft = false
@@ -60,7 +70,6 @@ function onTurn(c) {
             let x = new XMLHttpRequest()
             x.open("GET", "/TurnLeft")
             x.send()
-            stopCount += 1;
             forward = false
             back = false
             turnLeft = true
@@ -72,15 +81,19 @@ function onTurn(c) {
 window.addEventListener('keydown', (e) => {
     switch (e.key) {
         case 'a':
+            a = true;
             onTurn('L');
             break;
         case 'd':
+            d = true;
             onTurn('R');
             break;
         case 'w':
+            w = true;
             onForward();
             break;
         case 's':
+            s = true;
             onBack();
             break;
         default:
@@ -89,9 +102,25 @@ window.addEventListener('keydown', (e) => {
 });
 
 window.addEventListener('keyup', (e) => {
-    if (e.key === 'w' || e.key === 'a' || e.key === 's' || e.key === 'd') {
-        stopCount -= 1;
-        onStop();
+    switch (e.key) {
+        case 'w':
+            w = false;
+            onStop();
+            break;
+        case 'a':
+            a = false;
+            onStop();
+            break;
+        case 's':
+            s = false;
+            onStop();
+            break;
+        case 'd':
+            d = false;
+            onStop();
+            break;
+        default:
+            break;
     }
 });
 
