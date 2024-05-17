@@ -38,7 +38,7 @@ function onBack() {
 }
 
 function onStop() {
-    if (w === false && a === false && s === false && d === false) {
+    if (w === false && a === false && s === false && d === false && eneabled) {
         let x = new XMLHttpRequest()
         x.open("GET", "/Stop")
         x.send()
