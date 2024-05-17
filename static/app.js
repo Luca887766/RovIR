@@ -3,12 +3,14 @@ let back = false;
 let stop = false;
 let turnLeft = false;
 let turnRight = false;
+let stopCount = 0;
 
 function onForward() {
     if (forward === false) {
         let x = new XMLHttpRequest()
         x.open("GET", "/Forward")
         x.send()
+        stopCount += 1;
         forward = true
         back = false
         turnLeft = false
@@ -21,6 +23,7 @@ function onBack() {
         let x = new XMLHttpRequest()
         x.open("GET", "/Back")
         x.send()
+        stopCount += 1;
         forward = false
         back = true
         turnLeft = false
@@ -29,14 +32,15 @@ function onBack() {
 }
 
 function onStop() {
-    let x = new XMLHttpRequest()
-    x.open("GET", "/Stop")
-    x.send()
-    forward = false
-    back = false
-    turnLeft = false
-    turnRight = false
-
+    if (stopCount <= 0) {
+        let x = new XMLHttpRequest()
+        x.open("GET", "/Stop")
+        x.send()
+        forward = false
+        back = false
+        turnLeft = false
+        turnRight = false
+    }
 }
 
 function onTurn(c) {
@@ -45,16 +49,18 @@ function onTurn(c) {
             let x = new XMLHttpRequest()
             x.open("GET", "/TurnRight")
             x.send()
+            stopCount += 1;
             forward = false
             back = false
             turnLeft = false
             turnRight = true
         }
-    }else if(c === 'L'){
+    } else if (c === 'L') {
         if (turnLeft === false) {
             let x = new XMLHttpRequest()
             x.open("GET", "/TurnLeft")
             x.send()
+            stopCount += 1;
             forward = false
             back = false
             turnLeft = true
@@ -78,13 +84,13 @@ window.addEventListener('keydown', (e) => {
             onBack();
             break;
         default:
-            onStop();
             break;
     }
 });
 
 window.addEventListener('keyup', (e) => {
     if (e.key === 'w' || e.key === 'a' || e.key === 's' || e.key === 'd') {
+        stopCount -= 1;
         onStop();
     }
 });
