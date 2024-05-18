@@ -55,11 +55,6 @@ div.slide.hidden{
     font-size: 6vw;
 }
 
-@font-face {
-    font-family: "Monserrat";
-    src: url("font/Montserrat-VariableFont_wght.ttf");
-}
-
 #forwardButton{
     position: fixed;
     left: 100px;
@@ -97,13 +92,11 @@ div.slide.hidden{
 }
 
 .buttonComands:active{
-    color: black; 
-    font-family: "Monserrat";
-    height: 50px;
-    width: 50px;
-    border-width: medium;
-    border-color: green;
-    border-style: solid;
-    border-radius: 10px;
+    color: white; 
     background-color: green;
+}
+
+@font-face {
+    font-family: "Monserrat";
+    src: url("font/Montserrat-VariableFont_wght.ttf");
 }
