@@ -88,18 +88,22 @@ window.addEventListener('keydown', (e) => {
         case 'a':
             a = true;
             onTurn('L');
+            simulateButtonClick('leftButton');
             break;
         case 'd':
             d = true;
             onTurn('R');
+            simulateButtonClick('rightButton');
             break;
         case 'w':
             w = true;
             onForward();
+            simulateButtonClick('forwardButton');
             break;
         case 's':
             s = true;
             onBack();
+            simulateButtonClick('backButton');
             break;
         default:
             break;
@@ -111,18 +115,22 @@ window.addEventListener('keyup', (e) => {
         case 'w':
             w = false;
             onStop();
+            simulateButtonRelease('forwardButton');
             break;
         case 'a':
             a = false;
             onStop();
+            simulateButtonRelease('leftButton');
             break;
         case 's':
             s = false;
             onStop();
+            simulateButtonRelease('backButton');
             break;
         case 'd':
             d = false;
             onStop();
+            simulateButtonRelease('rightButton');
             break;
         default:
             break;
@@ -143,4 +151,16 @@ function toSlide(id) {
     d.querySelectorAll("*").forEach(function (e2) {
         e2.tabIndex = "-1"
     })
+}
+
+function simulateButtonClick(buttonId) {
+    let button = document.getElementById(buttonId);
+    button.classList.add('active'); 
+    button.dispatchEvent(MouseEvent('onmousedown'));
+}
+
+function simulateButtonRelease(buttonId) {
+    let button = document.getElementById(buttonId);
+    button.classList.remove('active'); 
+    button.dispatchEvent(MouseEvent('onmouseup'));
 }

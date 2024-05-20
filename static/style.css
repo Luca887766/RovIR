@@ -91,7 +91,7 @@ div.slide.hidden{
     background-color: transparent;
 }
 
-.buttonComands:active{
+.buttonComands:active, .buttonComands.active{
     color: white; 
     background-color: green;
 }
