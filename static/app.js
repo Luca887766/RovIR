@@ -105,6 +105,9 @@ window.addEventListener('keydown', (e) => {
             onBack();
             simulateButtonClick('backButton');
             break;
+        case ' ':
+            simulateButtonClick('screenButton');
+            break;
         default:
             break;
     }
@@ -132,6 +135,9 @@ window.addEventListener('keyup', (e) => {
             onStop();
             simulateButtonRelease('rightButton');
             break;
+        case ' ':
+            simulateButtonRelease('screenButton');
+            break;
         default:
             break;
     }
@@ -156,11 +162,11 @@ function toSlide(id) {
 function simulateButtonClick(buttonId) {
     let button = document.getElementById(buttonId);
     button.classList.add('active'); 
-    button.dispatchEvent(MouseEvent('onmousedown'));
+    button.dispatchEvent(new MouseEvent('onmousedown'));
 }
 
 function simulateButtonRelease(buttonId) {
     let button = document.getElementById(buttonId);
     button.classList.remove('active'); 
-    button.dispatchEvent(MouseEvent('onmouseup'));
+    button.dispatchEvent(new MouseEvent('onmouseup'));
 }
