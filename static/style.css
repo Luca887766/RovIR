@@ -25,6 +25,7 @@
     background-color: black;
     color: green;
     transition: 0.5s;
+    cursor: pointer;
 }
 
 #startButton:hover{
