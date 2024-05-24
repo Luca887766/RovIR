@@ -85,6 +85,10 @@ function onTurn(c) {
 
 window.addEventListener('keydown', (e) => {
     switch (e.key) {
+        case ' ':
+            toSlide('liveRovir')
+            simulateButtonClick('startButton');
+            break;
         case 'Escape':
             toSlide('startPage');
             enableAll(false);
@@ -141,6 +145,9 @@ window.addEventListener('keyup', (e) => {
             break;
         case 'p':
             simulateButtonRelease('screenButton');
+            break;
+        case ' ':
+            simulateButtonRelease('startButton');
             break;
         default:
             break;

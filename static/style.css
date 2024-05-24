@@ -28,7 +28,7 @@
     cursor: pointer;
 }
 
-#startButton:hover{
+#startButton:hover,#startButton.active, #startButton:active{
     border-top-left-radius: 50px;
     border-bottom-right-radius: 50px;
     background-color: green;
