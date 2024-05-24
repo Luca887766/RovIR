@@ -105,7 +105,7 @@ window.addEventListener('keydown', (e) => {
             onBack();
             simulateButtonClick('backButton');
             break;
-        case ' ':
+        case 'p':
             simulateButtonClick('screenButton');
             break;
         default:
@@ -135,7 +135,7 @@ window.addEventListener('keyup', (e) => {
             onStop();
             simulateButtonRelease('rightButton');
             break;
-        case ' ':
+        case 'p':
             simulateButtonRelease('screenButton');
             break;
         default:
