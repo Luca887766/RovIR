@@ -9,8 +9,8 @@ let s = false;
 let d = false;
 let eneabled = false;
 
-function enableAll(){
-    eneabled = true;
+function enableAll(sett){
+    eneabled = sett;
 }
 
 function onForward() {
@@ -85,6 +85,10 @@ function onTurn(c) {
 
 window.addEventListener('keydown', (e) => {
     switch (e.key) {
+        case 'Escape':
+            toSlide('startPage');
+            enableAll(false);
+            break;
         case 'a':
             a = true;
             onTurn('L');
