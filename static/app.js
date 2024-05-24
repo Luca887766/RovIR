@@ -86,7 +86,8 @@ function onTurn(c) {
 window.addEventListener('keydown', (e) => {
     switch (e.key) {
         case ' ':
-            toSlide('liveRovir')
+            toSlide('liveRovir');
+            enableAll(true);
             simulateButtonClick('startButton');
             break;
         case 'Escape':
