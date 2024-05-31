@@ -115,6 +115,7 @@ window.addEventListener('keydown', (e) => {
             simulateButtonClick('backButton');
             break;
         case 'p':
+            takeshot()
             simulateButtonClick('screenButton');
             break;
         default:
@@ -181,4 +182,18 @@ function simulateButtonRelease(buttonId) {
     let button = document.getElementById(buttonId);
     button.classList.remove('active'); 
     button.dispatchEvent(new MouseEvent('onmouseup'));
+}
+
+
+function takeshot() {
+    let div = document.getElementById('liveRovir');
+    html2canvas(div).then(
+    function (canvas) {
+        console.log(canvas)
+        var image = canvas.toDataURL();
+        var aDownloadLink = document.createElement('a');
+        aDownloadLink.download = 'canvas_image.png';
+        aDownloadLink.href = image;
+        aDownloadLink.click();
+    })
 }

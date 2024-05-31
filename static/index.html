@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="style.css">
         <meta name="viewport" content="width=device-width">
         <script type="text/javascript" src="app.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js"></script>
     </head>
     <body>
         <div class="slide" id="startPage">
@@ -17,7 +18,7 @@
             <button class="buttonComands" id="leftButton" onmousedown="onTurn('L')" onmouseup="onStop()">A</button>
             <button class="buttonComands" id="backButton" onmousedown="onBack()" onmouseup="onStop()">S</button>
             <button class="buttonComands" id="rightButton" onmousedown="onTurn('R')" onmouseup="onStop()">D</button>
-            <button id="screenButton" onmousedown="" onmouseup="">screen</button>
+            <button id="screenButton" onmousedown="takeshot()" onmouseup="">screen</button>
         </div>
         <script type="text/javascript">
             toSlide('startPage');
