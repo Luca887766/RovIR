@@ -20,6 +20,13 @@ GPIO.setup(IN4,GPIO.OUT)
 GPIO.setup(PWM_RIGHT,GPIO.OUT)
 GPIO.setup(PWM_LEFT,GPIO.OUT)
 
+GPIO.output(IN1,GPIO.LOW)
+GPIO.output(IN2,GPIO.LOW)
+GPIO.output(IN3,GPIO.LOW)
+GPIO.output(IN4,GPIO.LOW)
+GPIO.output(PWM_RIGHT,GPIO.HIGH)
+GPIO.output(PWM_LEFT,GPIO.HIGH)
+
 @app.route("/<path:p>")
 def serve_static(p):
     return app.send_static_file(p)
